@@ -172,6 +172,7 @@ Vagrant.configure("2") do |config|
 	# Master runs last so run the extra script to init kube service
 	if hostname == "master-01"
 	  box.vm.provision :shell, :path => "setup-k8s-master.sh"
+	  box.vm.provision :shell, :path => "setup-hostpath-csi.sh"
 	end
 	
 	

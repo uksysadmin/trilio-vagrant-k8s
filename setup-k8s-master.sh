@@ -12,6 +12,10 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown vagrant:vagrant $HOME/.kube/config
 
+
+# Flannel
+sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
 # Add Worker Node to Cluster
 sudo ssh -i /vagrant/insecure_key -o BatchMode=yes -o StrictHostKeyChecking=no root@worker-01 sudo $(sudo kubeadm token create --print-join-command) --cri-socket=/var/run/crio/crio.sock
 
